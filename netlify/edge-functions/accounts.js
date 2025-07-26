@@ -1,6 +1,5 @@
 // netlify/edge-functions/api/accounts.js
 
-import { Context } from 'https://edge.netlify.com';
 import { Client } from 'https://deno.land/x/postgres@v0.17.0/mod.ts'; // PostgreSQL client for Deno
 
 // Get your Neon DB connection string from Netlify environment variables.
