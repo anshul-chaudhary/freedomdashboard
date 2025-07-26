@@ -3,6 +3,6 @@
   functions = "netlify/edge-functions" # Location of your Edge Functions
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/edge-functions/api/:splat" # Route API calls to your Edge Function
-  status = 200 # Important: Use 200 for internal rewrite, not 301/302
+  from = "/api/accounts"  # Frontend calls this exact path
+  to = "/.netlify/edge-functions/accounts" # This now points directly to the moved accounts.js
+  status = 200
