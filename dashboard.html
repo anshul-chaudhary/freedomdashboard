@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FXBlue Account Dashboard - Comprehensive Dark Theme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Dark Theme Variables (Default) */
+        :root {
+            --bg-color: #121212; /* Very dark gray, almost black */
+            --card-bg: #1e1e1e; /* Slightly lighter than background for cards */
+            --text-color: #e0e0e0; /* Light gray for main text */
+            --secondary-text-color: #b0b0b0; /* Medium gray for secondary text */
+            --accent-color-positive: #28a745; /* Bright Green for positive */
+            --accent-color-negative: #dc3545; /* Bright Red for negative */
+            --border-color: #333333; /* Darker gray for subtle borders */
+            --shadow-color: rgba(0, 0, 0, 0.6); /* Deeper shadow for dark mode */
+            --header-color: #cccccc; /* Neutral light gray for header */
+            --gradient-start: #1e1e1e;
+            --gradient-end: #0a0a0a;
+            --button-text-color: #ffffff; /* White text for buttons */
+            --link-color: #4285F4; /* A vibrant blue for links (Google Blue) */
+            --link-hover-color: #61A3FF; /* Lighter blue on hover */
+        }
+
+        /* Light Theme Variables - APPLIED TO BODY.LIGHT-THEME */
+        body.light-theme {
+            --bg-color: #f0f2f5; /* Light background */
+            --card-bg: #ffffff; /* White cards */
+            --text-color: #333333; /* Dark text */
+            --secondary-text-color: #555555; /* Medium dark secondary text */
+            --accent-color-positive: #28a745; /* Green remains same */
+            --accent-color-negative: #dc3545; /* Red remains same */
+            --border-color: #dddddd; /* Lighter border */
+            --shadow-color: rgba(0, 0, 0, 0.1); /* Lighter shadow */
+            --header-color: #444444; /* Darker header text */
+            --gradient-start: #ffffff;
+            --gradient-end: #f8f8f8;
+            --button-text-color: #ffffff; /* White text for buttons */
+            --link-color: #1976D2; /* A standard blue for links */
+            --link-hover-color: #2196F3; /* Lighter blue on hover */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top */
+            min-height: 100vh;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg); /* Use card background for container itself */
+            position: relative; /* This makes absolute positioning inside it work */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        h1 {
+            grid-column: 1 / -1; /* Span across all columns */
+            text-align: center;
+            color: var(--header-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.1); /* Keep a subtle glow in dark, perhaps remove in light */
+            transition: color 0.3s ease, text-shadow 0.3s ease; /* Added text-shadow transition */
+        }
+        /* Adjust header shadow for light theme */
+        body.light-theme h1 {
+            text-shadow: none;
+            color: var(--header-color);
+        }
+
+        h1 a {
+            color: var(--link-color); /* Apply link color */
+            text-decoration: none; /* Remove default underline */
+            transition: color 0.2s ease, text-decoration 0.2s ease;
+        }
+
+        h1 a:hover {
+            color: var(--link-hover-color); /* Lighter color on hover */
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
+            background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
+        }
+        /* Adjust card gradient for light theme */
+        body.light-theme .card {
+            background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .card-title {
+            font-size: 1.1em;
+            font-weight: 400;
+            color: var(--secondary-text-color);
+            margin-bottom: 10px;
+            opacity: 0.9;
+            transition: color 0.3s ease;
+        }
+
+        .card-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--accent-color-positive);
+            transition: color 0.3s ease;
+        }
+        .card-value.negative {
+            color: var(--accent-color-negative);
+        }
+
+        .card-footer {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: var(--secondary-text-color);
+            opacity: 0.7;
+            transition: color 0.3s ease;
+        }
+
+        .loading-message, .error-message {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-style: italic;
+            color: var(--secondary-text-color);
+            padding: 20px;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+        .error-message {
+            color: var(--accent-color-negative);
+            font-weight: bold;
+        }
+
+        /* Styles for the bottom back button container */
+        .back-button-container {
+            grid-column: 1 / -1; /* Span across all columns */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Base styles for back buttons */
+        .back-button {
+            padding: 10px 20px;
+            background-color: var(--accent-color-positive); /* Consistent green color */
+            color: var(--button-text-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.2s, color 0.3s ease; /* Include color transition */
+            display: inline-block; /* Ensure padding works correctly */
+        }
+        .back-button:hover {
+            background-color: #218838; /* Slightly darker green on hover */
+        }
+
+        /* Styles for the top-right button */
+        .top-right-back-button {
+            position: absolute; /* Position it relative to the dashboard-container */
+            top: 20px; /* Adjust as needed from the top of the container */
+            right: 20px; /* Adjust as needed from the right of the container */
+            z-index: 10; /* Ensure it stays on top, but within the container context */
+            padding: 8px 15px; /* Adjust padding for visual balance */
+            background-color: var(--accent-color-positive); /* Same green as bottom button */
+            color: var(--button-text-color); /* Added color variable for consistency */
+            border-radius: 6px;
+            font-size: 1.2em;
+            line-height: 1;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s, color 0.3s ease; /* Added color transition */
+        }
+
+        .top-right-back-button:hover {
+            background-color: #218838; /* Same hover effect as bottom button */
+        }
+
+        /* Widget Container Styling */
+        .widget-section {
+            grid-column: 1 / -1; /* Spans across all columns */
+            background-color: var(--card-bg); /* Use card background for consistency */
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            margin-top: 25px; /* Spacing from the cards above */
+            min-height: 300px; /* Give some default height for widgets */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .widget-section h2 {
+            color: var(--header-color);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        .widget-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1; /* Allow content to grow if needed */
+        }
+        /* Specific adjustments for iframes within widget-content */
+        .widget-content iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: transparent;
+        }
+
+        /* Theme Toggle Button Styling (for icon) */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px; /* Make it a square for the icon */
+            height: 40px; /* Make it a square for the icon */
+            background-color: var(--secondary-text-color);
+            color: var(--button-text-color);
+            border: none;
+            border-radius: 50%; /* Make it round */
+            cursor: pointer;
+            font-size: 1.2em; /* Size of the icon */
+            display: flex; /* Use flexbox to center icon */
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .theme-toggle:hover {
+            background-color: #666666;
+            transform: scale(1.05); /* Slight grow on hover */
+        }
+        /* Light theme specific toggle color */
+        body.light-theme .theme-toggle {
+            background-color: #aaaaaa;
+            color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        body.light-theme .theme-toggle:hover {
+            background-color: #888888;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .top-right-back-button {
+                top: 15px;
+                right: 15px;
+                padding: 8px 12px;
+                font-size: 1em;
+                width: 30px;
+                height: 30px;
+            }
+            .theme-toggle {
+                top: 15px;
+                left: 15px;
+                width: 35px; /* Adjust size for mobile */
+                height: 35px;
+                font-size: 1em; /* Adjust icon size for mobile */
+            }
+            .widget-section {
+                padding: 15px;
+                margin-top: 20px;
+                min-height: 250px;
+            }
+            .widget-content iframe {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <div class="dashboard-container">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <i id="themeIcon" class="fas fa-moon"></i>
+        </button>
+
+        <a href="index.html" class="back-button top-right-back-button">←</a>
+
+        <h1 id="dashboardTitle">FXBlue Live Trading Overview</h1>
+
+        <p id="loading-message" class="loading-message">Loading account data...</p>
+
+        <div class="card">
+            <div class="card-title">Account Name</div>
+            <div class="card-value" id="accountDisplayName">N/A</div>
+            <div class="card-footer">User-defined name for this account.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Account Type</div>
+            <div class="card-value" id="accountType">N/A</div>
+            <div class="card-footer">Indicates if it's Real, Demo, Prop Firm, etc.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">User ID</div>
+            <div class="card-value" id="userid">N/A</div>
+            <div class="card-footer">Unique identifier for the account.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Balance</div>
+            <div class="card-value" id="accountBalance">N/A</div>
+            <div class="card-footer">Current account balance.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Equity</div>
+            <div class="card-value" id="accountEquity">N/A</div>
+            <div class="card-footer">Balance + floating profit/loss.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Floating P/L</div>
+            <div class="card-value" id="floatingProfit">N/A</div>
+            <div class="card-footer">Unrealized profit/loss on open trades.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Closed P/L</div>
+            <div class="card-value" id="closedProfit">N/A</div>
+            <div class="card-footer">Total realized profit/loss from closed trades.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Open Trades</div>
+            <div class="card-value" id="totalOpenPositions">N/A</div>
+            <div class="card-footer">Number of currently open trades.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Profit Factor</div>
+            <div class="card-value" id="bankedProfitFactor">N/A</div>
+            <div class="card-footer">Ratio of gross profit to gross loss from closed trades.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Risk/Return Ratio</div>
+            <div class="card-value" id="riskReturnRatio">N/A</div>
+            <div class="card-footer">Ratio indicating risk vs. return.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">History Length</div>
+            <div class="card-value" id="historyLengthDays">N/A</div>
+            <div class="card-footer">Days of historical data available.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Free Margin</div>
+            <div class="card-value" id="freeMargin">N/A</div>
+            <div class="card-footer">Usable margin for new trades.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Weekly Growth</div>
+            <div class="card-value" id="weeklyBankedGrowth">N/A</div>
+            <div class="card-footer">Percentage growth for the current week.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Monthly Growth</div>
+            <div class="card-value" id="monthlyBankedGrowth">N/A</div>
+            <div class="card-footer">Percentage growth for the current month.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Total Growth</div>
+            <div class="card-value" id="totalBankedGrowth">N/A</div>
+            <div class="card-footer">Overall percentage growth since inception.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Avg. Trade Duration</div>
+            <div class="card-value" id="averageTradeDurationHours">N/A</div>
+            <div class="card-footer">Average duration of trades in hours.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Worst Week %</div>
+            <div class="card-value" id="worstWeekPercentage">N/A</div>
+            <div class="card-footer">Worst percentage loss in a single week.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Worst Month %</div>
+            <div class="card-value" id="worstMonthPercentage">N/A</div>
+            <div class="card-footer">Worst percentage loss in a single month.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Trades Per Day</div>
+            <div class="card-value" id="tradesPerDay">N/A</div>
+            <div class="card-footer">Average number of trades executed daily.</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Total Deposits</div>
+            <div class="card-value" id="totalDeposits">N/A</div>
+            <div class="card-footer">Cumulative sum of all deposits.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Total Withdrawals</div>
+            <div class="card-value" id="totalWithdrawals">N/A</div>
+            <div class="card-footer">Cumulative sum of all withdrawals.</div>
+        </div>
+
+        <div class="widget-section">
+            <h2>Monthly Return Chart</h2>
+            <div class="widget-content">
+                <iframe src="//www.fxblue.com/fxbluechart.aspx?c=ch_monthlyreturntable&id=51316370" frameborder="0">
+                    <a href="//www.fxblue.com">FX Blue - free tools and services for FX and CFD traders</a>
+                </iframe>
+                <p style="color: var(--secondary-text-color); text-align: center; padding: 20px; transition: color 0.3s ease;">
+                    *Note: The FXBlue chart iframe may be blocked by your browser's security policies (CSP) or your server's configuration.*<br>
+                    To display dynamic historical data (charts, tables), you would typically need to fetch raw data via an API (if available from FXBlue or a service like MyFXBook) and then render it using a JavaScript charting library like Chart.js.
+                </p>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="index.html" class="back-button">← Back to Account Selection</a>
+        </div>
+    </div>
+
+    <script>
+        let currentAccountNumber = null;
+        let accountName = "Unnamed Account";
+        let accountType = "N/A";
+
+        // Function to parse URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Get the account details from the URL
+        currentAccountNumber = getUrlParameter('account');
+        accountName = getUrlParameter('name') || "Unnamed Account"; // Use provided name or default
+        accountType = getUrlParameter('type') || "N/A"; // Use provided type or default
+
+        const dashboardTitle = document.getElementById('dashboardTitle');
+        const loadingMessage = document.getElementById('loading-message');
+
+        if (currentAccountNumber) {
+            // Updated: Populate the hyperlink on the account number and remove quotes from account name
+            dashboardTitle.innerHTML = `FXBlue Analytics for ${accountName} (<a href="https://www.fxblue.com/users/${currentAccountNumber}" target="_blank">${currentAccountNumber}</a>)`;
+            loadingMessage.innerText = `Loading account data for ${accountName} (ID: ${currentAccountNumber}) from FXBlue...`;
+
+            // Update the new cards with stored data immediately
+            updateCard('accountDisplayName', accountName, 'plain');
+            updateCard('accountType', accountType, 'plain');
+
+            // Dynamically create and append the FXBlue script
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = `https://www.fxblue.com/users/${currentAccountNumber}/overviewscript`;
+            document.body.appendChild(script);
+
+            // Function to format numbers as currency (e.g., $1,234.56)
+            function formatCurrency(value) {
+                if (typeof value !== 'number' || isNaN(value)) return 'N/A';
+                return '$' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            }
+
+            // Function to format percentages (e.g., 12.34%)
+            function formatPercentage(value) {
+                if (typeof value !== 'number' || isNaN(value)) return 'N/A';
+                return value.toFixed(2) + '%';
+            }
+
+            // Function to format general numbers (e.g., 123, 12.34)
+            function formatNumber(value, decimals = 2) {
+                if (typeof value !== 'number' || isNaN(value)) return 'N/A';
+                return value.toFixed(decimals);
+            }
+
+            // Function to update a card's value and color based on positivity
+            function updateCard(id, value, type = 'number') { // type can be 'currency', 'percentage', 'number', 'plain'
+                const element = document.getElementById(id);
+                if (!element) return; // Exit if element not found
+
+                let formattedValue = 'N/A';
+                let isNegative = false;
+
+                if (typeof value === 'number' && !isNaN(value)) {
+                    if (type === 'currency') {
+                        formattedValue = formatCurrency(value);
+                    } else if (type === 'percentage') {
+                        formattedValue = formatPercentage(value);
+                    } else if (type === 'number') {
+                        formattedValue = formatNumber(value);
+                    } else { // type === 'plain' or other non-numeric
+                        formattedValue = value;
+                    }
+
+                    // Apply negative color logic only for currency and percentage, and relevant numbers
+                    if ((type === 'currency' || type === 'percentage' || type === 'number') && value < 0) {
+                        isNegative = true;
+                    }
+                } else if (value !== undefined && value !== null) {
+                    formattedValue = value.toString(); // For strings like userid
+                } else {
+                    formattedValue = 'N/A';
+                }
+
+                element.innerText = formattedValue;
+                if (isNegative) {
+                    element.classList.add('negative');
+                } else {
+                    element.classList.remove('negative');
+                }
+            }
+
+            // Wait for the FXBlue script to load
+            script.onload = function() {
+                if (typeof document.MTIntelligenceAccounts !== 'undefined' && document.MTIntelligenceAccounts.length > 0) {
+                    loadingMessage.style.display = 'none'; // Hide loading message
+
+                    const account = document.MTIntelligenceAccounts[0]; // Get the first account in the array
+                    console.log(`FXBlue Account Data for ${currentAccountNumber}:`, account);
+
+                    // Core Account Information
+                    updateCard('userid', account.userid, 'plain');
+                    updateCard('accountBalance', account.balance, 'currency');
+                    updateCard('accountEquity', account.equity, 'currency');
+                    updateCard('floatingProfit', account.floatingProfit, 'currency');
+                    updateCard('totalOpenPositions', account.totalOpenPositions, 'plain');
+                    updateCard('freeMargin', account.freeMargin, 'currency');
+                    updateCard('closedProfit', account.closedProfit, 'currency');
+
+
+                    // Growth & Performance Metrics
+                    updateCard('weeklyBankedGrowth', account.weeklyBankedGrowth, 'percentage');
+                    updateCard('monthlyBankedGrowth', account.monthlyBankedGrowth, 'percentage');
+                    updateCard('totalBankedGrowth', account.totalBankedGrowth, 'percentage');
+                    updateCard('bankedProfitFactor', account.bankedProfitFactor, 'number');
+                    updateCard('riskReturnRatio', account.riskReturnRatio, 'number');
+
+                    // Trade Statistics & Other
+                    updateCard('historyLengthDays', account.historyLengthDays, 'plain');
+                    updateCard('averageTradeDurationHours', account.averageTradeDurationHours, 'number');
+                    updateCard('worstWeekPercentage', account.worstWeekPercentage, 'percentage');
+                    updateCard('worstMonthPercentage', account.worstMonthPercentage, 'percentage');
+                    updateCard('tradesPerDay', account.tradesPerDay, 'number');
+
+                    // Total Deposits and Withdrawals
+                    updateCard('totalDeposits', account.totalDeposits, 'currency');
+                    updateCard('totalWithdrawals', account.totalWithdrawals, 'currency');
+
+                } else {
+                    loadingMessage.className = 'error-message';
+                    loadingMessage.innerText = `Error: Could not load FXBlue account data for ${currentAccountNumber}. Please ensure the account is published and the script URL is correct.`;
+                    // Hide or clear all data cards if data isn't available
+                    document.querySelectorAll('.card .card-value').forEach(el => el.innerText = 'N/A');
+                    document.querySelectorAll('.card .card-value').forEach(el => el.classList.remove('negative'));
+                }
+            };
+
+            script.onerror = function() {
+                loadingMessage.className = 'error-message';
+                loadingMessage.innerText = `Error: Failed to load FXBlue script for account ${currentAccountNumber}. Check the account number or network connection.`;
+                document.querySelectorAll('.card .card-value').forEach(el => el.innerText = 'N/A');
+                document.querySelectorAll('.card .card-value').forEach(el => el.classList.remove('negative'));
+            };
+
+        } else {
+            loadingMessage.className = 'error-message';
+            loadingMessage.innerHTML = 'No account number selected. Please go back to the main page to select an account.<div class="back-button-container"><a href="index.html" class="back-button">← Go back to Account Selection</a></div>';
+            // Hide dashboard content if no account is selected (except the back button)
+            const dashboardCards = document.querySelectorAll('.card');
+            dashboardCards.forEach(card => {
+                // Keep the account name/type cards visible if they were set by URL params
+                if (card.id !== 'accountDisplayName' && card.id !== 'accountType') {
+                    card.style.display = 'none';
+                }
+            });
+            // Also hide the dynamic title
+            dashboardTitle.style.display = 'none';
+        }
+
+        /* --- THEME TOGGLE LOGIC --- */
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon'); // Get reference to the icon element
+        const body = document.body; // Reference to the <body> element
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-theme');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Check for saved theme on page load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            // Default to dark theme if no preference is saved
+            setTheme('dark');
+        }
+
+        // Add event listener to the toggle button
+        themeToggleBtn.addEventListener('click', () => {
+            if (body.classList.contains('light-theme')) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+        });
+        /* --- END THEME TOGGLE LOGIC --- */
+    </script>
+
+</body>
+</html>
