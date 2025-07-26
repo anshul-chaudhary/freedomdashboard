@@ -1,0 +1,8 @@
+[build]
+  publish = "." # Your frontend files are in the root directory
+  functions = "netlify/edge-functions" # Location of your Edge Functions
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/edge-functions/api/:splat" # Route API calls to your Edge Function
+  status = 200 # Important: Use 200 for internal rewrite, not 301/302

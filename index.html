@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FXBlue Analytics Dashboard - Account Management</title>
+    <title>Freedom Analytics Dashboard - Account Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Dark Theme Variables - Consistent with dashboard.html */
+        /* Dark Theme Variables */
         :root {
             --bg-color: #121212; /* Very dark gray, almost black */
             --card-bg: #1e1e1e; /* Slightly lighter than background for cards */
@@ -28,36 +28,36 @@
             --input-bg: #3a3a3a; /* More neutral dark gray for input backgrounds */
             --real-account-color: #28a745; /* Green for 'Real' and 'Prop Firm' account type */
             --demo-account-color: #007bff; /* Blue for 'Demo' account type */
-            --gradient-start: #1e1e1e; /* Added for consistency, though not used everywhere */
-            --gradient-end: #0a0a0a;    /* Added for consistency, though not used everywhere */
+            --gradient-start: #1e1e1e;
+            --gradient-end: #0a0a0a;
             --label-default-color: #20c997; /* Teal for labels */
             --label-text-color: #333333; /* Dark text for teal label */
         }
 
-        /* Light Theme Variables - APPLIED TO BODY.LIGHT-THEME */
+        /* Light Theme Variables */
         body.light-theme {
-            --bg-color: #f0f2f5; /* Light background */
-            --card-bg: #ffffff; /* White cards */
-            --text-color: #333333; /* Dark text */
-            --secondary-text-color: #555555; /* Medium dark secondary text */
-            --accent-color: #007bff; /* Blue remains same */
-            --button-bg: #28a745; /* Green remains same */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --secondary-text-color: #555555;
+            --accent-color: #007bff;
+            --button-bg: #28a745;
             --button-hover-bg: #218838;
-            --delete-button-bg: #dc3545; /* Red remains same */
+            --delete-button-bg: #dc3545;
             --delete-button-hover-bg: #c82333;
-            --edit-button-bg: #ffc107; /* Yellow remains same */
+            --edit-button-bg: #ffc107;
             --edit-button-hover-bg: #e0a800;
-            --cancel-button-bg: #6c757d; /* Gray remains same */
+            --cancel-button-bg: #6c757d;
             --cancel-button-hover-bg: #5a6268;
-            --border-color: #dddddd; /* Lighter border */
-            --shadow-color: rgba(0, 0, 0, 0.1); /* Lighter shadow */
-            --header-color: #444444; /* Darker header text */
-            --input-bg: #ffffff; /* White input backgrounds in light mode */
+            --border-color: #dddddd;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --header-color: #444444;
+            --input-bg: #ffffff;
             --real-account-color: #28a745;
             --demo-account-color: #007bff;
             --gradient-start: #ffffff;
             --gradient-end: #f8f8f8;
-            --label-default-color: #148f77; /* Darker Teal for light mode */
+            --label-default-color: #148f77;
             --label-text-color: #333333;
         }
 
@@ -72,7 +72,7 @@
             align-items: flex-start;
             min-height: 100vh;
             box-sizing: border-box;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Added transition */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
@@ -84,8 +84,8 @@
             box-shadow: 0 10px 30px var(--shadow-color);
             border: 1px solid var(--border-color);
             text-align: center;
-            position: relative; /* For theme toggle button positioning */
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Added transition */
+            position: relative;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         h1 {
@@ -93,7 +93,7 @@
             margin-bottom: 25px;
             font-size: 2.2em;
             font-weight: 700;
-            transition: color 0.3s ease; /* Added transition */
+            transition: color 0.3s ease;
         }
         body.light-theme h1 {
             text-shadow: none;
@@ -104,14 +104,14 @@
             margin-bottom: 25px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            background-color: var(--input-bg); /* Adjusted for theme */
-            box-shadow: 0 2px 10px var(--shadow-color); /* Adjusted for theme */
+            background-color: var(--input-bg);
+            box-shadow: 0 2px 10px var(--shadow-color);
             overflow: hidden;
-            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         summary {
-            background-color: var(--border-color); /* Slightly different from main card-bg for summary */
+            background-color: var(--border-color);
             color: var(--text-color);
             padding: 15px 20px;
             font-size: 1.1em;
@@ -122,7 +122,7 @@
             justify-content: space-between;
             align-items: center;
             user-select: none;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Added transition */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         summary::-webkit-details-marker {
@@ -168,7 +168,7 @@
             margin-bottom: 8px;
             color: var(--secondary-text-color);
             font-size: 0.9em;
-            transition: color 0.3s ease; /* Added transition */
+            transition: color 0.3s ease;
         }
 
         .form-group input[type="text"],
@@ -178,26 +178,24 @@
             border-radius: 8px;
             border: 1px solid var(--border-color);
             background-color: var(--input-bg);
-            color: var(--text-color); /* Changed to text-color for theme */
+            color: var(--text-color);
             font-size: 1em;
             outline: none;
-            transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease; /* Added transition */
+            transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
         }
-        /* Custom arrow for select */
         .form-group select {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="%23e0e0e0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Dark arrow */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23e0e0e0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
             background-repeat: no-repeat;
             background-position: right 8px center;
             background-size: 24px;
-            padding-right: 30px; /* Space for arrow */
+            padding-right: 30px;
         }
         body.light-theme .form-group select {
-            background-image: url('data:image/svg+xml;utf8,<svg fill="%23555555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Light arrow */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23555555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
         }
-
 
         .form-group input[type="text"]::placeholder {
             color: var(--secondary-text-color);
@@ -223,7 +221,7 @@
             border-radius: 8px;
             font-size: 1em;
             cursor: pointer;
-            transition: background-color 0.2s ease, color 0.3s ease; /* Added color transition */
+            transition: background-color 0.2s ease, color 0.3s ease;
         }
 
         #addAccountBtn {
@@ -255,7 +253,7 @@
             padding: 15px;
             display: flex;
             flex-direction: column;
-            transition: background-color 0.3s ease, border-color 0.3s ease; /* Added transition */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .account-section h2 {
@@ -265,7 +263,7 @@
             margin-bottom: 15px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
-            transition: color 0.3s ease, border-color 0.3s ease; /* Added transition */
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .account-list {
@@ -282,8 +280,8 @@
             align-items: center;
             padding: 15px;
             border-bottom: 1px solid var(--border-color);
-            transition: border-color 0.3s ease; /* Added transition */
-            position: relative; /* For label positioning */
+            transition: border-color 0.3s ease;
+            position: relative;
         }
 
         .account-item:last-child {
@@ -299,14 +297,14 @@
             font-size: 1.1em;
             color: var(--text-color);
             margin-bottom: 5px;
-            transition: color 0.3s ease; /* Added transition */
+            transition: color 0.3s ease;
         }
         .account-details span {
             display: block;
             font-size: 0.9em;
             color: var(--secondary-text-color);
             margin-bottom: 10px;
-            transition: color 0.3s ease; /* Added transition */
+            transition: color 0.3s ease;
         }
 
         /* Styles for 'Real' and 'Demo' account type text */
@@ -353,7 +351,7 @@
             border-radius: 6px;
             font-size: 0.9em;
             cursor: pointer;
-            transition: background-color 0.2s ease, color 0.3s ease; /* Added color transition */
+            transition: background-color 0.2s ease, color 0.3s ease;
         }
 
         .account-item .actions .load-btn {
@@ -376,7 +374,7 @@
 
         .account-item .actions .edit-btn {
             background-color: var(--edit-button-bg);
-            color: #212529; /* Keep dark text for yellow button */
+            color: #212529;
         }
         .account-item .actions .edit-btn:hover {
             background-color: var(--edit-button-hover-bg);
@@ -387,32 +385,30 @@
             color: var(--secondary-text-color);
             font-style: italic;
             text-align: center;
-            transition: color 0.3s ease; /* Added transition */
+            transition: color 0.3s ease;
         }
 
-        /* Label / Tag Styling - Integrated into your .account-item structure */
+        /* Label / Tag Styling */
         .account-item .account-label {
             position: absolute;
-            top: 10px; /* Moves it down */
-            right: 10px; /* Moves it left (further from the right edge) */
+            top: 10px;
+            right: 10px;
             padding: 4px 8px;
             border-radius: 5px;
-            font-size: 0.7em; /* Slightly smaller for subtle tag */
+            font-size: 0.7em;
             font-weight: bold;
             color: var(--label-text-color);
             background-color: var(--label-default-color);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
             z-index: 5;
         }
-        /* Ensure label doesn't overlap with actions on small screens */
         @media (max-width: 480px) {
             .account-item .account-label {
-                top: 5px; /* Keep it higher on small screens to avoid button collision */
-                left: 5px; /* Position left to avoid collision with actions */
-                right: auto; /* Remove right property for left positioning */
+                top: 5px;
+                left: 5px;
+                right: auto;
             }
         }
-
 
         /* Theme Toggle Button Styling */
         .theme-toggle {
@@ -438,7 +434,6 @@
             background-color: #666666;
             transform: scale(1.05);
         }
-        /* Light theme specific toggle color */
         body.light-theme .theme-toggle {
             background-color: #aaaaaa;
             color: #ffffff;
@@ -447,8 +442,6 @@
         body.light-theme .theme-toggle:hover {
             background-color: #888888;
         }
-
-        /* Responsive adjustments for theme toggle */
         @media (max-width: 600px) {
             .theme-toggle {
                 top: 15px;
@@ -459,16 +452,15 @@
             }
         }
 
-        /* NEW: Sorting Controls CSS - Adjusted for position (right alignment) */
+        /* Sorting Controls CSS */
         .sort-controls {
-            /* Removed text-align: left; */
-            margin-bottom: 20px; /* Space between sorting and account sections */
+            margin-bottom: 20px;
             padding: 15px 20px;
-            background-color: var(--card-bg); /* Use card background for consistency */
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             display: flex;
-            justify-content: flex-end; /* Aligns content to the right */
+            justify-content: flex-end;
             align-items: center;
             gap: 10px;
             transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -489,34 +481,36 @@
             font-size: 0.95em;
             outline: none;
             cursor: pointer;
-            -webkit-appearance: none; /* Remove default dropdown arrow */
+            -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="%23e0e0e0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Dark arrow */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23e0e0e0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
             background-repeat: no-repeat;
             background-position: right 8px center;
             background-size: 20px;
-            padding-right: 30px; /* Space for arrow */
+            padding-right: 30px;
             transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
         }
 
         body.light-theme .sort-controls select {
-            background-image: url('data:image/svg+xml;utf8,<svg fill="%23555555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Light arrow */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23555555" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
         }
 
         .sort-controls select:focus {
             border-color: var(--accent-color);
         }
-        /* END NEW: Sorting Controls CSS */
     </style>
 </head>
 <body class="dark-theme">
 
     <div class="container">
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-            <i id="themeIcon" class="fas fa-moon"></i> </button>
+            <i id="themeIcon" class="fas fa-moon"></i>
+        </button>
 
-        <h1>Freedom Analytics Dashboard</h1> <details id="addAccountDetails">
+        <h1>Freedom Analytics Dashboard</h1>
+
+        <details id="addAccountDetails">
             <summary id="addAccountSummary">Add New FXBlue Account</summary>
             <div class="accordion-content">
                 <div class="form-row">
@@ -556,7 +550,7 @@
             <select id="sortAccountsBy">
                 <option value="name_asc">Account Name (A-Z)</option>
                 <option value="name_desc">Account Name (Z-A)</option>
-                </select>
+            </select>
         </div>
         <div class="accounts-display-wrapper">
             <div class="account-section real-accounts">
@@ -584,7 +578,7 @@
         const accountNumberInput = document.getElementById('accountNumberInput');
         const accountNameInput = document.getElementById('accountNameInput');
         const accountTypeSelect = document.getElementById('accountTypeSelect');
-        const accountLabelTextInput = document.getElementById('accountLabelText'); // New label input
+        const accountLabelTextInput = document.getElementById('accountLabelText');
         const addAccountButton = document.getElementById('addAccountBtn');
         const cancelEditButton = document.getElementById('cancelEditBtn');
 
@@ -598,28 +592,63 @@
         const noDemoAccountsMessage = document.getElementById('noDemoAccountsMessage');
         const noPropFirmAccountsMessage = document.getElementById('noPropFirmAccountsMessage');
 
-        // NEW: Get sorting select element
         const sortAccountsBy = document.getElementById('sortAccountsBy');
 
+        let accounts = []; // This will now be populated from Neon DB via Edge Function
         let editingIndex = -1;
 
-        // Use the exact storage key from your working code
-        let accounts = JSON.parse(localStorage.getItem('fxblueAccounts')) || [];
-
-        // NEW: Store and retrieve sorting preference
-        let currentSort = localStorage.getItem('currentSort') || 'name_asc'; // Default sort
-        // Ensure currentSort is a valid option after removing some
+        // Current sort preference from local storage (will still use local storage for UI state)
+        let currentSort = localStorage.getItem('currentSort') || 'name_asc';
         if (!['name_asc', 'name_desc'].includes(currentSort)) {
-            currentSort = 'name_asc'; // Reset to a valid default if the stored one is no longer available
+            currentSort = 'name_asc';
             localStorage.setItem('currentSort', currentSort);
         }
-        sortAccountsBy.value = currentSort; // Set dropdown to current sort
+        sortAccountsBy.value = currentSort;
 
-        // NEW: Sorting function (modified to remove ID and Type sorting logic)
+        // --- API Interaction Functions ---
+        const API_BASE_URL = '/api/accounts'; // This maps to your Netlify Edge Function
+
+        async function fetchAccountsFromDB() {
+            try {
+                const response = await fetch(API_BASE_URL);
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Failed to fetch accounts: ${response.status} - ${errorText}`);
+                }
+                const data = await response.json();
+                accounts = data || []; // Ensure accounts is an array, even if DB is empty
+                console.log('Accounts fetched from Neon DB:', accounts);
+                renderAccounts(); // Render the UI with fetched data
+            } catch (error) {
+                console.error('Error fetching accounts from Neon DB:', error);
+                alert('Could not load accounts. Please check the console for details.');
+            }
+        }
+
+        async function saveAccountsToDB() {
+            try {
+                const response = await fetch(API_BASE_URL, {
+                    method: 'POST', // We use POST to send the entire array to the Edge Function
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(accounts) // Send the current state of the accounts array
+                });
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Failed to save accounts: ${response.status} - ${errorText}`);
+                }
+                console.log('Accounts saved to Neon DB.');
+            } catch (error) {
+                console.error('Error saving accounts to Neon DB:', error);
+                alert('Could not save accounts. Please check the console for details.');
+            }
+        }
+
+        // --- Existing UI Logic (modified to use DB functions) ---
+
         function sortAccounts(arr, sortBy) {
             return arr.sort((a, b) => {
                 let valA, valB;
-                let direction = 1; // 1 for ASC, -1 for DESC
+                let direction = 1;
 
                 switch (sortBy) {
                     case 'name_asc':
@@ -632,7 +661,6 @@
                         direction = -1;
                         break;
                     default:
-                        // Fallback to name_asc if an invalid sort value is set
                         valA = a.name.toLowerCase();
                         valB = b.name.toLowerCase();
                         break;
@@ -657,10 +685,9 @@
             let hasDemoAccounts = false;
             let hasPropFirmAccounts = false;
 
-            // NEW: Sort accounts before rendering
-            const sortedAccounts = sortAccounts([...accounts], currentSort); // Create a sorted copy
+            const sortedAccounts = sortAccounts([...accounts], currentSort);
 
-            sortedAccounts.forEach((account, index) => { // Iterate through sortedAccounts
+            sortedAccounts.forEach((account) => { // Removed 'index' from forEach as originalIndex is found by ID
                 let typeClass = '';
                 let targetList;
 
@@ -673,10 +700,10 @@
                     targetList = demoAccountList;
                     hasDemoAccounts = true;
                 } else if (account.type === 'Prop Firm') {
-                    typeClass = 'type-real'; // Prop Firm accounts often treated as 'real' due to funding
+                    typeClass = 'type-real';
                     targetList = propFirmAccountList;
                     hasPropFirmAccounts = true;
-                } else { // Fallback for undefined types, put in Real
+                } else {
                     typeClass = '';
                     targetList = realAccountList;
                     hasRealAccounts = true;
@@ -686,10 +713,12 @@
                 listItem.classList.add('account-item');
 
                 let labelHtml = '';
-                // Only show label if labelText is provided in the account object
                 if (account.labelText) {
                     labelHtml = `<span class="account-label">${account.labelText}</span>`;
                 }
+
+                // Find the original index for edit/delete/load actions
+                const originalIndex = accounts.findIndex(acc => acc.id === account.id);
 
                 listItem.innerHTML = `
                     ${labelHtml}
@@ -699,20 +728,19 @@
                         <span class="${typeClass}">Type: ${account.type}</span>
                     </div>
                     <div class="actions">
-                        <button class="load-btn" data-index="${accounts.indexOf(account)}">Load Dashboard</button>
-                        <button class="edit-btn" data-index="${accounts.indexOf(account)}">Edit</button>
-                        <button class="delete-btn" data-index="${accounts.indexOf(account)}">Delete</button>
+                        <button class="load-btn" data-index="${originalIndex}">Load Dashboard</button>
+                        <button class="edit-btn" data-index="${originalIndex}">Edit</button>
+                        <button class="delete-btn" data-index="${originalIndex}">Delete</button>
                     </div>
                 `;
                 targetList.appendChild(listItem);
             });
 
-            // Display/hide "No accounts" messages
             noRealAccountsMessage.style.display = hasRealAccounts ? 'none' : 'block';
             noDemoAccountsMessage.style.display = hasDemoAccounts ? 'none' : 'block';
             noPropFirmAccountsMessage.style.display = hasPropFirmAccounts ? 'none' : 'block';
 
-            // Ensure messages are appended if visible and not already there (prevents duplicates on re-render)
+            // Ensure messages are appended if missing (after initial clear)
             if (!hasRealAccounts && !realAccountList.contains(noRealAccountsMessage)) {
                 realAccountList.appendChild(noRealAccountsMessage);
             }
@@ -730,69 +758,75 @@
                 accountNumberInput.value = accountToEdit.id;
                 accountNameInput.value = accountToEdit.name;
                 accountTypeSelect.value = accountToEdit.type;
-                accountLabelTextInput.value = accountToEdit.labelText || ''; // Populate label text
+                accountLabelTextInput.value = accountToEdit.labelText || '';
 
                 addAccountSummary.textContent = 'Edit FXBlue Account';
                 addAccountButton.textContent = 'Save Changes';
                 cancelEditButton.style.display = 'inline-block';
-                addAccountDetails.open = true; // Open accordion when editing
+                addAccountDetails.open = true;
+                accountNumberInput.disabled = true; // Prevent changing ID when editing
             } else {
                 accountNumberInput.value = '';
                 accountNameInput.value = '';
-                accountTypeSelect.value = 'Real'; // Default type
-                accountLabelTextInput.value = ''; // Clear label text
+                accountTypeSelect.value = 'Real';
+                accountLabelTextInput.value = '';
 
                 addAccountSummary.textContent = 'Add New FXBlue Account';
                 addAccountButton.textContent = 'Add Account';
                 cancelEditButton.style.display = 'none';
+                accountNumberInput.disabled = false; // Enable ID input when adding
             }
         }
 
-        function handleSaveAccount() {
+        async function handleSaveAccount() {
             const id = accountNumberInput.value.trim();
             const name = accountNameInput.value.trim();
             const type = accountTypeSelect.value;
-            const labelText = accountLabelTextInput.value.trim(); // Get label text
+            const labelText = accountLabelTextInput.value.trim();
 
             if (!id || !name || !type) {
                 alert('Account ID, Account Name, and Account Type cannot be empty!');
                 return;
             }
 
-            const isDuplicate = accounts.some((acc, idx) => acc.id === id && idx !== editingIndex);
-            if (isDuplicate) {
+            // Client-side check for duplicate ID when adding a NEW account
+            // This is important because the backend POST just replaces,
+            // so we need to prevent adding duplicates from the UI perspective.
+            if (editingIndex === -1 && accounts.some(acc => acc.id === id)) {
                 alert('An account with this ID already exists!');
                 return;
             }
 
             if (editingIndex !== -1) {
-                accounts[editingIndex].id = id;
+                // Update in local array
+                accounts[editingIndex].id = id; // ID won't change as it's disabled
                 accounts[editingIndex].name = name;
                 accounts[editingIndex].type = type;
-                accounts[editingIndex].labelText = labelText; // Save label text
-                editingIndex = -1; // Reset editing state
+                accounts[editingIndex].labelText = labelText;
+                editingIndex = -1;
             } else {
-                accounts.push({ id, name, type, labelText }); // Save label text with new account
+                // Add to local array
+                accounts.push({ id, name, type, labelText });
             }
 
-            localStorage.setItem('fxblueAccounts', JSON.stringify(accounts));
-            renderAccounts();
-            updateFormState(); // Reset form fields
-            addAccountDetails.open = false; // Collapse the accordion after saving changes
+            await saveAccountsToDB(); // Save the entire updated 'accounts' array to Neon DB
+            await fetchAccountsFromDB(); // Re-fetch to ensure UI is consistent with DB
+            updateFormState(); // Reset form
+            addAccountDetails.open = false; // Collapse accordion
         }
 
-        function deleteAccount(index) {
+        async function deleteAccount(index) {
             if (confirm(`Are you sure you want to delete account "${accounts[index].name}" (${accounts[index].id})?`)) {
-                accounts.splice(index, 1);
-                localStorage.setItem('fxblueAccounts', JSON.stringify(accounts));
-                renderAccounts();
-                // Adjust editingIndex if the deleted item was before or was the edited item
+                accounts.splice(index, 1); // Remove from local array
+                await saveAccountsToDB(); // Save the entire updated 'accounts' array to Neon DB
+                // Adjust editingIndex if the deleted item was being edited or was before it
                 if (editingIndex === index) {
                     editingIndex = -1;
-                    updateFormState(); // Reset form if edited item was deleted
+                    updateFormState();
                 } else if (editingIndex > index) {
-                    editingIndex--; // Shift index if an item before the edited one was deleted
+                    editingIndex--;
                 }
+                await fetchAccountsFromDB(); // Re-fetch and re-render
             }
         }
 
@@ -806,16 +840,16 @@
         function editAccount(index) {
             editingIndex = index;
             updateFormState();
-            // Scroll to the addAccountDetails element
             addAccountDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function cancelEdit() {
             editingIndex = -1;
-            updateFormState(); // This will clear the form and reset button text
-            addAccountDetails.open = false; // Collapse the accordion
+            updateFormState();
+            addAccountDetails.open = false;
         }
 
+        // --- Event Listeners ---
         addAccountButton.addEventListener('click', handleSaveAccount);
         cancelEditButton.addEventListener('click', cancelEdit);
 
@@ -843,23 +877,26 @@
             }
         });
 
-        // NEW: Event listener for sorting dropdown
-        sortAccountsBy.addEventListener('change', (event) => {
+        sortAccountsBy.addEventListener('change', async (event) => {
             currentSort = event.target.value;
-            localStorage.setItem('currentSort', currentSort); // Save preference
-            renderAccounts(); // Re-render accounts with new sort order
+            localStorage.setItem('currentSort', currentSort); // Store sort preference
+            renderAccounts(); // Re-render with new sort, data is already in 'accounts' array
         });
 
-        // Initial render and form state update
-        renderAccounts(); // This now calls sortAccounts internally
-        updateFormState();
+        // --- Initial setup on page load ---
+        (async () => {
+            // First, fetch existing accounts from the database
+            await fetchAccountsFromDB();
+            // Then, update the form state (which also ensures the accordion is closed if not editing)
+            updateFormState();
+        })();
+
 
         /* --- THEME TOGGLE LOGIC --- */
         const themeToggleBtn = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const body = document.body;
 
-        // Function to set the theme
         function setTheme(theme) {
             if (theme === 'light') {
                 body.classList.add('light-theme');
@@ -874,16 +911,15 @@
             }
         }
 
-        // Check for saved theme on page load
+        // Apply saved theme on load
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             setTheme(savedTheme);
         } else {
-            // Default to dark theme if no preference is saved
-            setTheme('dark');
+            setTheme('dark'); // Default to dark theme if no preference saved
         }
 
-        // Add event listener to the toggle button
+        // Toggle theme on button click
         themeToggleBtn.addEventListener('click', () => {
             if (body.classList.contains('light-theme')) {
                 setTheme('dark');
