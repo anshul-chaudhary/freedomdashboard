@@ -1,8 +1,13 @@
 [build]
-  publish = "." # Your frontend files are in the root directory
-  functions = "netlify/edge-functions" # Location of your Edge Functions
+  publish = "."
+  functions = "netlify/edge-functions"
 
 [[redirects]]
-  from = "/api/accounts"  # Frontend calls this exact path
-  to = "/.netlify/edge-functions/accounts" # This now points directly to the moved accounts.js
+  from = "/api/accounts"
+  to = "/.netlify/edge-functions/accounts"
+  status = 200
+
+[[redirects]] # Add this new redirect for the test function
+  from = "/hello"
+  to = "/.netlify/edge-functions/hello"
   status = 200
